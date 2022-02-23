@@ -38,17 +38,29 @@ namespace saving_objectz
 
             var jsonString = JsonSerializer.Serialize(rijals);
 
-            //Console.WriteLine(jsonString);
+         
+
+            using (var sw = new StreamWriter("hasil_coba_save.json"))
+            {
+                //jsonString;
+                // JsonSerializer.Serialize(rijals); <----not work
+                sw.WriteLine(jsonString);
+            }
+
             var copyOfGuys = JsonSerializer.Deserialize<List<Guy>>(jsonString);
 
-            foreach (var guy in copyOfGuys) {
 
-                //Console.WriteLine("I deserialized this guy: {0}", guy);
-                Console.WriteLine($"I deserialized this guy: {guy}");
-            }
+            //Console.WriteLine(jsonString);
+
+
+            //foreach (var guy in copyOfGuys) {
+
+            //    //Console.WriteLine("I deserialized this guy: {0}", guy);
+            //    Console.WriteLine($"I deserialized this guy: {guy}");
+            //}
 
 
         }//END Main method
-  } // END class
+    } // END class
 }//END ALL
 
