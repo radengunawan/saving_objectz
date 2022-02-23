@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
+using System.Text.Json;
 
 namespace saving_objectz
 {
@@ -29,14 +30,25 @@ namespace saving_objectz
                                 Hair = new HairStyle() { Color = HairColor.Auburn, Length = 2.7f }
             });
 
-            foreach (var item in rijals)
-            {
-                Console.WriteLine(item);
+            //foreach (var item in rijals)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+            var jsonString = JsonSerializer.Serialize(rijals);
+
+            //Console.WriteLine(jsonString);
+            var copyOfGuys = JsonSerializer.Deserialize<List<Guy>>(jsonString);
+
+            foreach (var guy in copyOfGuys) {
+
+                //Console.WriteLine("I deserialized this guy: {0}", guy);
+                Console.WriteLine($"I deserialized this guy: {guy}");
             }
 
 
-
-        }//END method
+        }//END Main method
   } // END class
 }//END ALL
 
